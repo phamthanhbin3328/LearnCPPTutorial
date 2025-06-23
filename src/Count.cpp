@@ -1,0 +1,6 @@
+#include "Count.h"
+
+int count(const int x, const int y)
+{
+    return x-y;
+}
