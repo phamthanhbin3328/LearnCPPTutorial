@@ -1,3 +1,5 @@
+TARGET = ./build
+
 .PHONY: all
 all: ./build/main.exe
 	echo 'Build Done'
@@ -12,6 +14,12 @@ all: ./build/main.exe
 	mkdir -p build
 	g++ -I./include -c ./src/Count.cpp -o ./build/Count.o
 
+.PHONY: staticlib
+staticlib:
+	g++ -I./include -c src/Count.cpp -o ./build/Count.o
+	mkdir lib
+	ar rvs ./lib/Count.a ./build/Count.o
+	echo 'Create static lib done'
 .PHONY: clean
 clean:
 	rm -rf ./build
